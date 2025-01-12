@@ -7,20 +7,17 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SeleniumIntroTest {
+public class RedirectAndTitleTests {
     private static WebDriver webDriver;
     private static String baseUrl;
 
     @BeforeAll
     public static void setUp() {
-        // Set the system property for ChromeDriver
         System.setProperty("webdriver.chrome.driver", "C:\\webDriver\\chromedriver-win64\\chromedriver.exe");
 
-        // Initialize ChromeOptions
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*"); //allowing it to bypass the COR
 
-        // Initialize the WebDriver-->to set various configurations for the Chrome browser.
         webDriver = new ChromeDriver(options);
 
         // Set the base URL for testing
@@ -32,15 +29,13 @@ public class SeleniumIntroTest {
         // Navigate to the base URL
         webDriver.get(baseUrl);
 
-        // Getting the title of the page and check if it matches the expected title
         String actualTitle = webDriver.getTitle();
+        Thread.sleep(1000);
         //Printing out the Actual Title
         System.out.println("Actual title: " + actualTitle);
 
-        // Assert that the title is as expected
         assertEquals("GeeksforGeeks | A computer science portal for geeks", actualTitle, "Title does not match");
 
-        Thread.sleep(2000);
     }
 //2. testing redirection
     @Test
