@@ -24,7 +24,7 @@ public class ContentLoadingAndAccessibilityTest {
         options.addArguments("--remote-allow-origins=*");
         webDriver = new ChromeDriver(options);
         webDriver.get(baseUrl);
-        System.out.println("Setting up resources for Search Functionality Tests...");
+        System.out.println("Setting up resources for ContentLoading & Accessibility Tests...");
     }
 
     @Test
@@ -71,52 +71,6 @@ public class ContentLoadingAndAccessibilityTest {
             }
         }
 
-/*
-
-        // Step 3: Check for broken links
-        System.out.println("Checking for broken links...");
-        List<WebElement> links = webDriver.findElements(By.tagName("a"));
-        for (WebElement link : links) {
-            String href = link.getAttribute("href");
-            if (href != null && !href.isEmpty() && !href.contains("javascript:void(0)")) {
-                try {
-                    // Simulate clicking the link and checking for success
-                    link.click();
-                    webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                    String currentUrl = webDriver.getCurrentUrl();
-                    if (currentUrl.equals(href)) {
-                        System.out.println("Link works: " + href);
-                    } else {
-                        System.out.println("Broken link: " + href);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error clicking link: " + href);
-                }
-            }
-        }
-
-        // Step 4: Test accessibility features (ARIA labels)
-        System.out.println("Checking for ARIA labels...");
-        List<WebElement> elementsWithAriaLabel = webDriver.findElements(By.xpath("//*[@aria-label]"));
-        for (WebElement element : elementsWithAriaLabel) {
-            String ariaLabel = element.getAttribute("aria-label");
-            if (ariaLabel != null && !ariaLabel.isEmpty()) {
-                System.out.println("ARIA label found: " + ariaLabel);
-            } else {
-                System.out.println("Element without ARIA label.");
-            }
-        }
-
-        // Step 5: Test keyboard navigation (Tab and Shift+Tab)
-        System.out.println("Testing keyboard navigation...");
-        WebElement firstFocusableElement = webDriver.findElement(By.tagName("a")); // Assume the first link is focusable
-        firstFocusableElement.sendKeys(Keys.TAB);
-        // Ensure focus moves correctly (you can validate focus shift on a real page by verifying attributes like 'focus')
-        System.out.println("Keyboard navigation tested.");
-
-        // Cleanup
-        webDriver.quit();
-        */
     }
 
     @Test
